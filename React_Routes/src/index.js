@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './CSS/index.css';
 
 import Happy from './components/Happy';
@@ -10,7 +11,20 @@ import Guilty from './components/Guilty';
 class Home extends Component{
   render(){
     return(
-      // your code goes here
+      <Router>
+        <div>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/Happy">Happy</Link></li>
+            <li><Link to="/Sleepy">Sleepy</Link></li>
+            <li><Link to="/Guilty">Guilty</Link></li>
+          </ul>
+          {/* <Route exact path="/" component={index} /> */}
+          <Route path="/Happy" component={Guilty} />
+          <Route path="/Sleepy" component={Happy} />
+          <Route path="/Guilty" component={Sleepy} />
+        </div>
+      </Router>
     )
   }
 }
